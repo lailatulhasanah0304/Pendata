@@ -2,7 +2,7 @@
 
 Modeling adalah tahap dalam proses data mining yang bertujuan untuk membuat model menggunakan teknik atau algoritma tertentu agar dapat menemukan pola, membuat prediksi, atau menghasilkan informasi dari data. Pada tahap ini, data yang sudah dipersiapkan akan digunakan untuk membangun model yang dapat membantu menyelesaikan masalah bisnis.
 
-# Select Modeling Techniques 
+## Select Modeling Techniques 
 
 Tahap ini bertujuan untuk menentukan metode atau algoritma yang akan digunakan untuk membuat model.
 
@@ -14,7 +14,7 @@ Penjelasan:
 Contoh:
 * Menggunakan metode Decision Tree untuk memprediksi keputusan pelanggan.
 
-# Generate Test Design 
+## Generate Test Design 
 
 Tahap ini bertujuan untuk merencanakan bagaimana model akan diuji.
 
@@ -27,7 +27,7 @@ Penjelasan:
 Contoh:
 * 80% data digunakan untuk training dan 20% untuk testing.
 
-# Build Model 
+## Build Model 
 
 Tahap ini bertujuan untuk membuat model menggunakan teknik yang telah dipilih.
 
@@ -39,7 +39,7 @@ Penjelasan:
 Contoh:
 * Membuat model untuk memprediksi pelanggan yang akan membeli produk.
 
-# Assess Model 
+## Assess Model 
 
 Tahap ini bertujuan untuk mengevaluasi kinerja model yang telah dibuat.
 

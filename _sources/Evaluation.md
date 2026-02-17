@@ -2,7 +2,7 @@
 
 Evaluation adalah tahap dalam proses data mining yang bertujuan untuk mengevaluasi atau menilai model yang telah dibuat, serta memastikan bahwa model tersebut sudah sesuai dengan tujuan bisnis. Pada tahap ini, dilakukan pemeriksaan apakah hasil dari model sudah benar, akurat, dan dapat digunakan untuk membantu menyelesaikan masalah bisnis.
 
-# Evaluate Results 
+## Evaluate Results 
 
 Tahap ini bertujuan untuk menilai hasil dari model yang telah dibuat.
 
@@ -15,7 +15,7 @@ Penjelasan:
 Contoh:
 * Model berhasil memprediksi pelanggan dengan akurasi 90%.
 
-# Review Process 
+## Review Process 
 
 Tahap ini bertujuan untuk meninjau kembali seluruh proses yang telah dilakukan.
 
@@ -28,7 +28,7 @@ Penjelasan:
 Contoh:
 * Memeriksa kembali proses pembersihan data dan pembuatan model.
 
-# Determine Next Steps 
+## Determine Next Steps 
 Tahap ini bertujuan untuk menentukan tindakan selanjutnya berdasarkan hasil evaluasi.
 
 Penjelasan:

@@ -2,7 +2,7 @@
 
 Data Understanding adalah tahap dalam proses data mining yang bertujuan untuk mengumpulkan, memahami, dan mempelajari data yang akan digunakan sebelum dilakukan pengolahan lebih lanjut. Pada tahap ini, kita mulai berinteraksi langsung dengan data untuk mengetahui isi, kondisi, dan kualitas data tersebut. Tujuannya adalah agar kita memahami data dengan baik sehingga dapat digunakan secara tepat pada tahap berikutnya.
 
-# Collect Initial Data
+## Collect Initial Data
 
 Tahap pertama adalah mengumpulkan data yang akan digunakan dalam proses data mining.
 
@@ -15,7 +15,7 @@ Penjelasan:
 Contoh:
 * Mengumpulkan data pelanggan, data transaksi, dan data produk dari sistem toko.
 
-# Describe Data 
+## Describe Data 
 
 Tahap ini bertujuan untuk memahami isi dan karakteristik data yang telah dikumpulkan.
 
@@ -28,7 +28,7 @@ Penjelasan:
 Contoh:
 * Data memiliki kolom: ID pelanggan, nama, umur, dan jumlah pembelian.
 
-# Explore Data
+## Explore Data
 
 Tahap ini bertujuan untuk mempelajari data lebih dalam dan menemukan informasi awal dari data.
 
@@ -41,7 +41,7 @@ Penjelasan:
 Contoh:
 * Mengetahui produk yang paling sering dibeli oleh pelanggan.
 
-# Verify Data Quality 
+## Verify Data Quality 
 
 Tahap ini bertujuan untuk memastikan bahwa data yang digunakan memiliki kualitas yang baik.
 

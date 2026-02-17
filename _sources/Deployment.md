@@ -2,7 +2,7 @@
 
 Deployment adalah tahap terakhir dalam proses data mining yang bertujuan untuk menerapkan atau menggunakan model yang telah dibuat ke dalam sistem nyata agar dapat membantu proses bisnis dan pengambilan keputusan. Pada tahap ini, model yang sudah dievaluasi dan dinyatakan baik akan digunakan secara langsung oleh pengguna atau organisasi.
 
-# Plan Deployment 
+## Plan Deployment 
 
 Tahap ini bertujuan untuk merencanakan bagaimana model akan digunakan.
 
@@ -15,7 +15,7 @@ Penjelasan:
 Contoh:
 * Model digunakan dalam sistem rekomendasi produk pada toko online.
 
-# Plan Monitoring and Maintenance 
+## Plan Monitoring and Maintenance 
 
 Tahap ini bertujuan untuk memastikan model tetap bekerja dengan baik setelah digunakan.
 
@@ -28,7 +28,7 @@ Penjelasan:
 Contoh:
 * Memperbarui model setiap beberapa bulan
 
-# Produce Final Report 
+## Produce Final Report 
 
 Tahap ini bertujuan untuk mendokumentasikan hasil proyek data mining.
 
@@ -41,7 +41,7 @@ Penjelasan:
 Contoh:
 * Membuat laporan tentang hasil prediksi pelanggan.
 
-# Review Project 
+## Review Project 
 
 Tahap ini bertujuan untuk mengevaluasi seluruh proyek yang telah dilakukan.
 

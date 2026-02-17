@@ -2,7 +2,7 @@
 
 Data Preparation adalah tahap dalam proses data mining yang bertujuan untuk menyiapkan data agar siap digunakan dalam proses modeling atau pembuatan model. Pada tahap ini, data yang telah dikumpulkan dan dipahami sebelumnya akan dipilih, dibersihkan, dan diatur agar sesuai dengan kebutuhan analisis.
 
-# Select Data 
+## Select Data 
 
 Tahap ini bertujuan untuk memilih data yang relevan dengan tujuan analisis.
 
@@ -14,7 +14,7 @@ Penjelasan:
 Contoh:
 * Memilih data pelanggan dan data transaksi untuk analisis pembelian.
 
-# Clean Data 
+## Clean Data 
 
 Tahap ini bertujuan untuk memperbaiki dan membersihkan data dari kesalahan.
 
@@ -27,7 +27,7 @@ Penjelasan:
 Contoh:
 * Menghapus data pelanggan yang tidak memiliki informasi lengkap.
 
-# Construct Data 
+## Construct Data 
 
 Tahap ini bertujuan untuk membuat data baru atau mengubah data agar lebih sesuai untuk analisis.
 
@@ -39,7 +39,7 @@ Penjelasan:
 Contoh:
 * Membuat kolom baru seperti total pembelian dari jumlah dan harga barang.
 
-# Integrate Data 
+## Integrate Data 
 
 Tahap ini bertujuan untuk menggabungkan data dari berbagai sumber menjadi satu.
 
@@ -51,7 +51,7 @@ Penjelasan:
 Contoh:
 * Menggabungkan data pelanggan dengan data transaksi.
 
-# Format Data 
+## Format Data 
 
 Tahap ini bertujuan untuk mengubah format data agar sesuai dengan kebutuhan modeling.
 
