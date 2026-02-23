@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Notebooks with MyST Markdown &#8212; Penambangan Data</title>
+    <title>Data Preparation &#8212; Penambangan Data</title>
   
   
   
@@ -57,9 +57,11 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown-notebooks';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Data Preparation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modeling" href="Modelling.html" />
+    <link rel="prev" title="Data Understanding" href="Data%20Understanding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,10 +179,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Bussines%20Understanding.html">Business Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data%20Understanding.html">Data Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Data%20Preparation.html">Data Preparation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Preparation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modelling.html">Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Deployment.html">Deployment</a></li>
@@ -257,7 +257,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmarkdown-notebooks.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FData Preparation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -287,7 +287,7 @@
       
       
       
-      <li><a href="_sources/markdown-notebooks.md" target="_blank"
+      <li><a href="_sources/Data Preparation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +371,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Notebooks with MyST Markdown</h1>
+    <h1>Data Preparation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -381,9 +381,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-data">Select Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-data">Clean Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-data">Construct Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-data">Integrate Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-data">Format Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Select Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Clean Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Construct Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Integrate Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Format Data</a></li>
 </ul>
             </nav>
         </div>
@@ -395,50 +402,151 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="notebooks-with-myst-markdown">
-<h1>Notebooks with MyST Markdown<a class="headerlink" href="#notebooks-with-myst-markdown" title="Link to this heading">#</a></h1>
-<p>Jupyter Book also lets you write text-based notebooks using MyST Markdown.
-See <a class="reference external" href="https://jupyterbook.org/file-types/myst-notebooks.html">the Notebooks with MyST Markdown documentation</a> for more detailed instructions.
-This page shows off a notebook written in MyST Markdown.</p>
-<section id="an-example-cell">
-<h2>An example cell<a class="headerlink" href="#an-example-cell" title="Link to this heading">#</a></h2>
-<p>With MyST Markdown, you can define code cells with a directive like so:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-<p>When your book is built, the contents of any <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p>Jupyter Book uses <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/">Jupytext</a> to convert text-based files to notebooks, and can support <a class="reference external" href="https://jupyterbook.org/file-types/jupytext.html">many other text-based notebook files</a>.</p>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-preparation">
+<h1>Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h1>
+<p>Data Preparation adalah tahap dalam proses data mining yang bertujuan untuk menyiapkan data agar siap digunakan dalam proses modeling atau pembuatan model. Pada tahap ini, data yang telah dikumpulkan dan dipahami sebelumnya akan dipilih, dibersihkan, dan diatur agar sesuai dengan kebutuhan analisis.</p>
+<section id="select-data">
+<h2>Select Data<a class="headerlink" href="#select-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk memilih data yang relevan dengan tujuan analisis.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Memilih data yang dibutuhkan sesuai tujuan data mining.</p></li>
+<li><p>Tidak semua data harus digunakan, hanya data yang penting saja.</p></li>
+<li><p>Menghindari penggunaan data yang tidak relevan agar proses lebih efisien.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Memilih data pelanggan dan data transaksi untuk analisis pembelian.</p></li>
+</ul>
 </section>
-<section id="create-a-notebook-with-myst-markdown">
-<h2>Create a notebook with MyST Markdown<a class="headerlink" href="#create-a-notebook-with-myst-markdown" title="Link to this heading">#</a></h2>
-<p>MyST Markdown notebooks are defined by two things:</p>
-<ol class="arabic simple">
-<li><p>YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-See the YAML at the top of this page for example.</p></li>
-<li><p>The presence of <code class="docutils literal notranslate"><span class="pre">{code-cell}</span></code> directives, which will be executed with your book.</p></li>
-</ol>
-<p>That’s all that is needed to get started!</p>
+<section id="clean-data">
+<h2>Clean Data<a class="headerlink" href="#clean-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk memperbaiki dan membersihkan data dari kesalahan.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Menghapus data yang kosong atau tidak lengkap.</p></li>
+<li><p>Menghapus data yang duplikat.</p></li>
+<li><p>Memperbaiki data yang salah atau tidak sesuai.</p></li>
+<li><p>Memastikan data menjadi lebih akurat.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Menghapus data pelanggan yang tidak memiliki informasi lengkap.</p></li>
+</ul>
 </section>
-<section id="quickly-add-yaml-metadata-for-myst-notebooks">
-<h2>Quickly add YAML metadata for MyST Notebooks<a class="headerlink" href="#quickly-add-yaml-metadata-for-myst-notebooks" title="Link to this heading">#</a></h2>
-<p>If you have a markdown file and you’d like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">myst</span> <span class="n">init</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">markdownfile</span><span class="o">.</span><span class="n">md</span>
-</pre></div>
-</div>
+<section id="construct-data">
+<h2>Construct Data<a class="headerlink" href="#construct-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk membuat data baru atau mengubah data agar lebih sesuai untuk analisis.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Membuat atribut baru dari data yang sudah ada.</p></li>
+<li><p>Mengubah format data agar mudah digunakan.</p></li>
+<li><p>Menghitung nilai tertentu dari data.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Membuat kolom baru seperti total pembelian dari jumlah dan harga barang.</p></li>
+</ul>
+</section>
+<section id="integrate-data">
+<h2>Integrate Data<a class="headerlink" href="#integrate-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk menggabungkan data dari berbagai sumber menjadi satu.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Menggabungkan beberapa data yang berbeda.</p></li>
+<li><p>Memastikan data saling terhubung dengan benar.</p></li>
+<li><p>Membuat data menjadi lebih lengkap.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Menggabungkan data pelanggan dengan data transaksi.</p></li>
+</ul>
+</section>
+<section id="format-data">
+<h2>Format Data<a class="headerlink" href="#format-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk mengubah format data agar sesuai dengan kebutuhan modeling.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Mengubah format data menjadi sesuai.</p></li>
+<li><p>Mengatur struktur data agar mudah digunakan.</p></li>
+<li><p>Menyesuaikan tipe data seperti angka, teks, atau tanggal.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Mengubah format tanggal menjadi format yang sama.# Materi Data Preparation</p></li>
+</ul>
+<p>Data Preparation adalah tahap dalam proses data mining yang bertujuan untuk menyiapkan data agar siap digunakan dalam proses modeling atau pembuatan model. Pada tahap ini, data yang telah dikumpulkan dan dipahami sebelumnya akan dipilih, dibersihkan, dan diatur agar sesuai dengan kebutuhan analisis.</p>
+</section>
+<section id="id1">
+<h2>Select Data<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk memilih data yang relevan dengan tujuan analisis.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Memilih data yang dibutuhkan sesuai tujuan data mining.</p></li>
+<li><p>Tidak semua data harus digunakan, hanya data yang penting saja.</p></li>
+<li><p>Menghindari penggunaan data yang tidak relevan agar proses lebih efisien.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Memilih data pelanggan dan data transaksi untuk analisis pembelian.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>Clean Data<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk memperbaiki dan membersihkan data dari kesalahan.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Menghapus data yang kosong atau tidak lengkap.</p></li>
+<li><p>Menghapus data yang duplikat.</p></li>
+<li><p>Memperbaiki data yang salah atau tidak sesuai.</p></li>
+<li><p>Memastikan data menjadi lebih akurat.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Menghapus data pelanggan yang tidak memiliki informasi lengkap.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>Construct Data<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk membuat data baru atau mengubah data agar lebih sesuai untuk analisis.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Membuat atribut baru dari data yang sudah ada.</p></li>
+<li><p>Mengubah format data agar mudah digunakan.</p></li>
+<li><p>Menghitung nilai tertentu dari data.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Membuat kolom baru seperti total pembelian dari jumlah dan harga barang.</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>Integrate Data<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk menggabungkan data dari berbagai sumber menjadi satu.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Menggabungkan beberapa data yang berbeda.</p></li>
+<li><p>Memastikan data saling terhubung dengan benar.</p></li>
+<li><p>Membuat data menjadi lebih lengkap.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Menggabungkan data pelanggan dengan data transaksi.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>Format Data<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk mengubah format data agar sesuai dengan kebutuhan modeling.</p>
+<p>Penjelasan:</p>
+<ul class="simple">
+<li><p>Mengubah format data menjadi sesuai.</p></li>
+<li><p>Mengatur struktur data agar mudah digunakan.</p></li>
+<li><p>Menyesuaikan tipe data seperti angka, teks, atau tanggal.</p></li>
+</ul>
+<p>Contoh:</p>
+<ul class="simple">
+<li><p>Mengubah format tanggal menjadi format yang sama.</p></li>
+</ul>
 </section>
 </section>
 
@@ -472,6 +580,24 @@ See the YAML at the top of this page for example.</p></li>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="Data%20Understanding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Understanding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Modelling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -488,9 +614,16 @@ See the YAML at the top of this page for example.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-cell">An example cell</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-notebook-with-myst-markdown">Create a notebook with MyST Markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickly-add-yaml-metadata-for-myst-notebooks">Quickly add YAML metadata for MyST Notebooks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-data">Select Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-data">Clean Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construct-data">Construct Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrate-data">Integrate Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-data">Format Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Select Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Clean Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Construct Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Integrate Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Format Data</a></li>
 </ul>
   </nav></div>
 
