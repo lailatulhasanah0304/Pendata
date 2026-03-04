@@ -358,7 +358,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -374,6 +376,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-data">perhitungan jarak data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan">Penjelasan:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -390,7 +403,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># baca dataset</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;dataaaaaa.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data mengukur jarak.csv&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
 
 <span class="c1"># lihat 5 data pertama</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -675,6 +688,91 @@ Std Dev     : 12.39144402425593
 </div>
 <p>penjelasan:</p>
 <p>Kode di atas ini digunakan untuk melihat statistik dasar setiap kolom numerik di dataset. Untuk setiap kolom, kita mengecek jumlah data yang ada, rata-rata (mean), nilai tengah (median), dan standar deviasi (std dev) yang menunjukkan sebaran data dari rata-rata. Dengan begitu, kita bisa memahami karakteristik angka di tiap kolom, misalnya apakah nilai-nilainya cenderung besar, kecil, atau tersebar luas, sehingga analisis data menjadi lebih mudah.</p>
+<section id="perhitungan-jarak-data">
+<h2>perhitungan jarak data<a class="headerlink" href="#perhitungan-jarak-data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># pilih 2 baris (0 = baris pertama, 1 = baris kedua)</span>
+<span class="n">idx_a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">idx_b</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">baris_a</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx_a</span><span class="p">]</span>
+<span class="n">baris_b</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx_b</span><span class="p">]</span>
+
+<span class="n">fitur_numerik</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="s2">&quot;fnlwgt&quot;</span><span class="p">,</span><span class="s2">&quot;educational-num&quot;</span><span class="p">,</span><span class="s2">&quot;capital-gain&quot;</span><span class="p">,</span><span class="s2">&quot;capital-loss&quot;</span><span class="p">,</span><span class="s2">&quot;hours-per-week&quot;</span><span class="p">]</span>
+<span class="n">fitur_nominal</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;workclass&quot;</span><span class="p">,</span><span class="s2">&quot;occupation&quot;</span><span class="p">,</span><span class="s2">&quot;relationship&quot;</span><span class="p">,</span><span class="s2">&quot;race&quot;</span><span class="p">,</span><span class="s2">&quot;native-country&quot;</span><span class="p">]</span>
+<span class="n">fitur_ordinal</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;education&quot;</span><span class="p">]</span>
+<span class="n">fitur_binary</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;gender&quot;</span><span class="p">,</span><span class="s2">&quot;income&quot;</span><span class="p">]</span>
+
+<span class="n">rank_edu</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Preschool&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;1st-4th&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;5th-6th&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;7th-8th&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;9th&quot;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;10th&quot;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;11th&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="s2">&quot;12th&quot;</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="s2">&quot;HS-grad&quot;</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Some-college&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;Assoc&quot;</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span>
+    <span class="s2">&quot;Bachelors&quot;</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;Masters&quot;</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;Prof-school&quot;</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;Doctorate&quot;</span><span class="p">:</span><span class="mi">15</span>
+<span class="p">}</span>
+<span class="n">rank_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">rank_edu</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="n">total_nilai</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">jumlah_fitur</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># numerik (normalisasi range)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fitur_numerik</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">baris_a</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">baris_b</span><span class="p">[</span><span class="n">f</span><span class="p">]):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">baris_a</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">baris_b</span><span class="p">[</span><span class="n">f</span><span class="p">]))</span> <span class="o">/</span> <span class="n">r</span>
+            <span class="n">total_nilai</span> <span class="o">+=</span> <span class="n">d</span>
+            <span class="n">jumlah_fitur</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># nominal (0/1)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fitur_nominal</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">baris_a</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">baris_b</span><span class="p">[</span><span class="n">f</span><span class="p">]):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">baris_a</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">==</span> <span class="n">baris_b</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="n">total_nilai</span> <span class="o">+=</span> <span class="n">d</span>
+        <span class="n">jumlah_fitur</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># ordinal (rank -&gt; 0..1)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fitur_ordinal</span><span class="p">:</span>
+    <span class="n">ra</span> <span class="o">=</span> <span class="n">rank_edu</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">baris_a</span><span class="p">[</span><span class="n">f</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">rb</span> <span class="o">=</span> <span class="n">rank_edu</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">baris_b</span><span class="p">[</span><span class="n">f</span><span class="p">]),</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ra</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">rb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">za</span> <span class="o">=</span> <span class="p">(</span><span class="n">ra</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rank_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">zb</span> <span class="o">=</span> <span class="p">(</span><span class="n">rb</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rank_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">za</span> <span class="o">-</span> <span class="n">zb</span><span class="p">)</span>
+        <span class="n">total_nilai</span> <span class="o">+=</span> <span class="n">d</span>
+        <span class="n">jumlah_fitur</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c1"># binary (0/1)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fitur_binary</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">baris_a</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="ow">and</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">baris_b</span><span class="p">[</span><span class="n">f</span><span class="p">]):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">baris_a</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="o">==</span> <span class="n">baris_b</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
+        <span class="n">total_nilai</span> <span class="o">+=</span> <span class="n">d</span>
+        <span class="n">jumlah_fitur</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">nilai_akhir</span> <span class="o">=</span> <span class="n">total_nilai</span> <span class="o">/</span> <span class="n">jumlah_fitur</span> <span class="k">if</span> <span class="n">jumlah_fitur</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total jarak =&quot;</span><span class="p">,</span> <span class="n">total_nilai</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah fitur yang dihitung =&quot;</span><span class="p">,</span> <span class="n">jumlah_fitur</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jarak campuran =&quot;</span><span class="p">,</span> <span class="n">nilai_akhir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total jarak = 3.6489909823274136
+Jumlah fitur yang dihitung = 14
+Jarak campuran = 0.2606422130233867
+</pre></div>
+</div>
+</div>
+</div>
+<section id="penjelasan">
+<h3>Penjelasan:<a class="headerlink" href="#penjelasan" title="Link to this heading">#</a></h3>
+<p>Kode di atas digunakan untuk menghitung jarak campuran antara dua data pada dataset yang memiliki beberapa tipe atribut, yaitu numerik, nominal, ordinal, dan binary. Pertama, program memilih dua baris data yang akan dibandingkan dari dataset. Kemudian setiap atribut dikelompokkan berdasarkan jenis datanya, seperti kolom numerik, nominal, ordinal, dan binary.</p>
+<p>Selanjutnya, untuk atribut numerik, jarak dihitung dengan cara melihat selisih nilai antara dua data lalu dinormalisasi menggunakan rentang nilai minimum dan maksimum pada kolom tersebut. Untuk atribut nominal, jarak dihitung dengan membandingkan apakah nilainya sama atau berbeda, di mana nilai yang sama diberi jarak 0 dan yang berbeda diberi jarak 1. Untuk atribut ordinal, nilai kategori terlebih dahulu diubah menjadi peringkat, kemudian dihitung selisihnya setelah dinormalisasi. Sedangkan untuk atribut binary, jarak dihitung dengan cara membandingkan apakah kedua nilai sama atau tidak.</p>
+<p>Semua nilai jarak dari setiap atribut kemudian dijumlahkan menjadi total nilai jarak, dan jumlah atribut yang dihitung juga dicatat. Terakhir, nilai jarak campuran diperoleh dengan membagi total jarak dengan jumlah atribut yang digunakan. Hasil ini menunjukkan seberapa mirip atau berbeda dua data tersebut, di mana nilai yang lebih kecil berarti kedua data lebih mirip, sedangkan nilai yang lebih besar menunjukkan perbedaan yang lebih besar.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -722,6 +820,24 @@ Std Dev     : 12.39144402425593
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-jarak-data">perhitungan jarak data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan">Penjelasan:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
